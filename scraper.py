@@ -11,7 +11,7 @@ from timeloop import Timeloop
 tl = Timeloop()
 
 
-def record_cheapest_price(price):
+def record_cheapest_price(cheapest_price):
     json_body = [
         {
             "measurement": "gold_price",
