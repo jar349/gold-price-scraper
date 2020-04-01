@@ -5,8 +5,6 @@ RUN pip install pipenv
 WORKDIR /app
 
 COPY Pipfile* ./
-RUN pipenv sync
+RUN pipenv install --system
 
 COPY . .
-
-CMD [ "pipenv", "run", "/start.sh" ]
