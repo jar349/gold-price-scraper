@@ -39,12 +39,11 @@ def get_index():
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            const data = this.responseText;
-            const renamed_data = data.map(point => ({'t': point['time'],'y': point['price']}))
+            const data = xhttp.responseText.map(point => ({'t': point['time'],'y': point['price']}));
             var ctx = document.getElementById("myChart")
             var myChart = new Chart(ctx, {
               type: "line",
-              data: renamed_data
+              data: data
             })
           }
         };
