@@ -36,6 +36,7 @@ def get_index():
       <canvas id="myChart" width="85%" height="85%"></canvas>
       <script src="https://cdnjs.com/libraries/Chart.js"></script>
       <script>
+        var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             const data = this.responseText;
