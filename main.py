@@ -34,7 +34,7 @@ def get_index():
     <body>
       <h2>Recent Gold Prices on Herod - Horde</h2>
       <canvas id="myChart" width="85%" height="85%"></canvas>
-      <script src="https://cdnjs.com/libraries/Chart.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
       <script>
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
