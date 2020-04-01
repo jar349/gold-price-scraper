@@ -41,7 +41,7 @@ def record_cheapest_price(price):
     client.write_points(json_body)
 
 
-@tl.job(interval=datetime.timedelta(hours=6), init_on_start=True)
+@tl.job(interval=datetime.timedelta(hours=6), run_on_start=True)
 def scrape_prices():
     page = requests.get('https://www.g2g.com/wow-us/gold-2299-19249?server=30799&faction=543&sorting=price%40asc')
     tree = html.fromstring(page.content)
