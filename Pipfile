@@ -10,8 +10,8 @@ pylint = "*"
 lxml = "*"
 requests = "*"
 influxdb = "*"
-timeloop = "*"
 fastapi = "*"
+timeloop = {editable = true,git = "http://github.com/jar349/timeloop.git",ref = "run-on-start"}
 
 [requires]
 python_version = "3.6"

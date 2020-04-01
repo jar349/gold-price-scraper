@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c5ee9c3197bcad9de6c9343462f04cb9ab5605e2f6e4bbf7dc7fbc862bbcb368"
+            "sha256": "44b91d444dbca058cc160562597026003dabaca79219795e65976e63a8f58428"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -150,12 +150,9 @@
             "version": "==0.13.2"
         },
         "timeloop": {
-            "hashes": [
-                "sha256:4e716c67fe6bcadcee7ddb91e2520792426818a70f27e630cfbbbd9becc48a13",
-                "sha256:70cb69eeef39968ea0e6dd68a3a3a51257d5f4aa27b177ab1b19ca86ff525946"
-            ],
-            "index": "pypi",
-            "version": "==1.0.2"
+            "editable": true,
+            "git": "http://github.com/jar349/timeloop.git",
+            "ref": "5648c208a9a8201987d924a6febcf05c987db4ee"
         },
         "urllib3": {
             "hashes": [
