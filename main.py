@@ -43,7 +43,12 @@ def get_index():
             var ctx = document.getElementById("myChart")
             var myChart = new Chart(ctx, {
               type: "line",
-              data: data.map(point => ({'t': point['time'],'y': point['price']}))
+              data: {
+                datasets: [{
+                    label: "USD Per 1000g",
+                    data: data.map(point => ({'t': point['time'],'y': point['price']}))
+                }]
+              }
             })
           }
         };
