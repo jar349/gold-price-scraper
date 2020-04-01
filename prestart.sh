@@ -1,3 +1,3 @@
 #! /usr/bin/env bash
 
-pipenv run scraper.py &
+pipenv run /app/scraper.py &
