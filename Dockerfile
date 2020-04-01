@@ -8,3 +8,5 @@ COPY Pipfile* ./
 RUN pipenv sync
 
 COPY . .
+
+CMD [ "pipenv", "run", "/start.sh" ]
