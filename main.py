@@ -62,8 +62,10 @@ def get_index():
                     id: "Date",
                     type: "time",
                     time: {
+                      round: "minute",
+                      minUnit: "minute",
                       displayFormats: {
-                        minute: 'MMM D h:mm a'
+                        week: 'MMM D h:mm a'
                       }
                     }
                   }]
