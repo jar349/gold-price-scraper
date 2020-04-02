@@ -42,29 +42,39 @@ def get_index():
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             const datapoints = Array.from(xhttp.responseText);
-            var ctx = document.getElementById("myChart")
+            var ctx = document.getElementById("myChart").getContext('2d');
             var myChart = new Chart(ctx, {
               type: "line",
               data: {
+                labels: [
+                    moment().subtract(6, "d").toDate(),
+                    moment().subtract(5, "d").toDate(),
+                    moment().subtract(4, "d").toDate(),
+                    moment().subtract(3, "d").toDate(),
+                    moment().subtract(2, "d").toDate(),
+                    moment().subtract(1, "d").toDate(),
+                    moment().subtract(0, "d").toDate()
+                ]
                 datasets: [{
+                    backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+					borderColor: window.chartColors.red,
                     label: "USD Per 1000g",
-                    xAxisID: "Date",
-                    yAxisID: "USD",
-                    data: datapoints.map(point => ({'x': moment(point['time']),'y': point['price']}))
+                    data: datapoints.map(point => ({'x': point['time'],'y': point['price']}))
                 }]
               },
               options: {
                 scales: {
                   yAxes: [{
-                    id: "USD",
                     type: "linear",
+                    linear: {
+                      precision: 2
+                    },
                     scaleLabel: {
                       display: true,
                       labelString: "US Dollars"
                     }
                   }],
                   xAxes: [{
-                    id: "Date",
                     type: "time",
                     time: {
                       parser: timeFormat,
@@ -81,7 +91,7 @@ def get_index():
           }
         };
 
-        xhttp.open("GET", "http://compute.ruiz.house:8088/prices", true);
+        xhttp.open("GET", "/prices", true);
         xhttp.send();
       </script>
     </body>
