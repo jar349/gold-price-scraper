@@ -60,14 +60,7 @@ def get_index():
                   }],
                   xAxes: [{
                     id: "Date",
-                    type: "time",
-                    time: {
-                      round: "minute",
-                      minUnit: "minute",
-                      displayFormats: {
-                        week: 'MMM D h:mm a'
-                      }
-                    }
+                    type: "time"
                   }]
                 }
               }
