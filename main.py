@@ -50,7 +50,7 @@ def get_index():
                     label: "USD Per 1000g",
                     xAxisID: "Date",
                     yAxisID: "USD",
-                    data: datapoints.map(point => ({'x': new Date(point['time']),'y': point['price']}))
+                    data: datapoints.map(point => ({'x': moment(point['time']),'y': point['price']}))
                 }]
               },
               options: {
