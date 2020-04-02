@@ -49,18 +49,30 @@ def get_index():
                     label: "USD Per 1000g",
                     xAxisID: "Date",
                     yAxisID: "USD",
-                    data: datapoints.map(point => ({'t': point['time'],'y': point['price']}))
+                    data: datapoints.map(point => ({'x': new Date(point['time']),'y': point['price']}))
                 }]
               },
               options: {
                 scales: {
                   yAxes: [{
                     id: "USD",
-                    type: "linear"
+                    type: "linear",
+                    scaleLabel: {
+                      display: true,
+                      labelString: "US Dollars"
+                    }
                   }],
                   xAxes: [{
                     id: "Date",
-                    type: "time"
+                    type: "time",
+                    time: {
+                      parser: timeFormat,
+                      tooltipFormat: "ll HH:mm"
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Date"
+                    }
                   }]
                 }
               }
