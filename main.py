@@ -39,15 +39,34 @@ def get_index():
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            const data = Array.from(xhttp.responseText);
+            const datapoints = Array.from(xhttp.responseText);
             var ctx = document.getElementById("myChart")
             var myChart = new Chart(ctx, {
               type: "line",
               data: {
                 datasets: [{
                     label: "USD Per 1000g",
-                    data: data.map(point => ({'t': point['time'],'y': point['price']}))
+                    xAxisID: "Date",
+                    yAxisID: "USD",
+                    data: datapoints.map(point => ({'t': point['time'],'y': point['price']}))
                 }]
+              },
+              options: {
+                scales: {
+                  yAxes: [{
+                    id: "USD",
+                    type: "linear"
+                  }],
+                  xAxes: [{
+                    id: "Date",
+                    type: "time",
+                    time: {
+                      displayFormats: {
+                        minute: 'MMM D h:mm a'
+                      }
+                    }
+                  }]
+                }
               }
             })
           }
