@@ -46,29 +46,25 @@ def get_index():
             var myChart = new Chart(ctx, {
               type: "line",
               data: {
-                labels: [
-                    moment().subtract(6, "d").toDate(),
-                    moment().subtract(5, "d").toDate(),
-                    moment().subtract(4, "d").toDate(),
-                    moment().subtract(3, "d").toDate(),
-                    moment().subtract(2, "d").toDate(),
-                    moment().subtract(1, "d").toDate(),
-                    moment().subtract(0, "d").toDate()
-                ]
+                labels: datapoints.map(point => Date(point['time']))
                 datasets: [{
-                    backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-					borderColor: window.chartColors.red,
+                    fill: false,
+                    backgroundColor: "#FF4136",
+					borderColor: "#FF4136",
                     label: "USD Per 1000g",
-                    data: datapoints.map(point => ({'x': point['time'],'y': point['price']}))
+                    lineTension: 0,
+                    data: datapoints.map(point => point['price'])
                 }]
               },
               options: {
+                fill: false,
+                responsive: true,
                 scales: {
                   yAxes: [{
-                    type: "linear",
-                    linear: {
-                      precision: 2
+                    ticks: {
+                      beginAtZero: true
                     },
+                    display: true
                     scaleLabel: {
                       display: true,
                       labelString: "US Dollars"
@@ -76,10 +72,7 @@ def get_index():
                   }],
                   xAxes: [{
                     type: "time",
-                    time: {
-                      parser: timeFormat,
-                      tooltipFormat: "ll HH:mm"
-                    },
+                    display: true,
                     scaleLabel: {
                         display: true,
                         labelString: "Date"
