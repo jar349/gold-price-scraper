@@ -46,7 +46,7 @@ def get_index():
             var myChart = new Chart(ctx, {
               type: "line",
               data: {
-                labels: datapoints.map(point => Date(point['time'])),
+                labels: datapoints.map(point => moment(point['time'])),
                 datasets: [{
                     fill: false,
                     backgroundColor: "#FF4136",
