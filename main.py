@@ -33,38 +33,39 @@ def get_index():
     </head>
     <body>
       <h2>Recent Gold Prices on Herod - Horde</h2>
-      <canvas id="myChart" width="85%" height="85%"></canvas>
+      <canvas id="myChart" width="800px" height="600px"></canvas>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
       <script>
-        var timeFormat = 'MM/DD HH:mm';
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            const datapoints = Array.from(xhttp.responseText);
+            const datapoints = JSON.parse(xhttp.responseText);
+            const labels = datapoints.map(point => moment(point['time']));
+            const data = datapoints.map(point => point['price']);
             var ctx = document.getElementById("myChart").getContext('2d');
             var myChart = new Chart(ctx, {
               type: "line",
               data: {
-                labels: datapoints.map(point => moment(point['time'])),
+                labels: labels,
                 datasets: [{
                     fill: false,
                     backgroundColor: "#FF4136",
-					borderColor: "#FF4136",
+                    borderColor: "#FF4136",
                     label: "USD Per 1000g",
                     lineTension: 0,
-                    data: datapoints.map(point => point['price'])
+                    data: data
                 }]
               },
               options: {
                 fill: false,
-                responsive: true,
                 scales: {
                   yAxes: [{
-                    ticks: {
-                      beginAtZero: true
-                    },
                     display: true,
+                    ticks: {
+                      suggestedMin: 25,
+                      suggestedMax: 65
+                    },
                     scaleLabel: {
                       display: true,
                       labelString: "US Dollars"
