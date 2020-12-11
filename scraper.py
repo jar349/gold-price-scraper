@@ -46,7 +46,7 @@ def scrape_prices():
     page = requests.get('https://www.g2g.com/wow-us/gold-2299-19249?server=30799&faction=543&sorting=price%40asc')
     tree = html.fromstring(page.content)
     all_prices = []
-    for price_string in tree.xpath('//span[@class="products__exch-rate"]/span[1]/text()'):
+    for price_string in tree.xpath('//span[@class="products__exch-rate input-gold"]/span[1]/text()'):
         all_prices.append(float(price_string)*1000)
         
     sorted_prices = sorted(all_prices)
